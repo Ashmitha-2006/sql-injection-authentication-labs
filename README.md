@@ -23,12 +23,3 @@ Add these folders into your existing `web-security-academy-labs` repository.
 | `brute_force_ip_block` | Broken Brute-Force Protection — IP Block | Practitioner |
 | `password_brute_force_via_change` | Password Brute-Force via Password Change | Practitioner |
 
-## How to Add to Your Repo
-
-```bash
-cd ~/Downloads/web-security-academy-labs
-cp -r path/to/new-labs/* .
-git add .
-git commit -m "Add SQL injection and authentication lab writeups"
-git push
-```
