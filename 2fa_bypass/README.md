@@ -14,7 +14,6 @@ This lab demonstrates a 2FA (Two-Factor Authentication) bypass vulnerability whe
 
 **Objective:** Bypass 2FA and access Carlos's account page without completing the 2FA step.
 
-![Login page — logging in as carlos](step1_login_as_carlos.png)
 
 ---
 
