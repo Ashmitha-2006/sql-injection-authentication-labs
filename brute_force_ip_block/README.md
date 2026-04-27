@@ -16,7 +16,10 @@ This lab is vulnerable due to a logic flaw in its password brute-force protectio
 | Victim's username | `carlos` |
 | Passwords | Candidate password list (from lab) |
 
----
+🧠 Attacker’s Approach
+
+While testing the login functionality, I noticed that after a few incorrect attempts, the application temporarily blocked further login requests from my IP.However, after logging in with valid credentials, the block was reset. This indicated that the application resets the failed login counter on successful authentication.This behavior suggested that the brute-force protection could be bypassed by mixing valid login attempts with invalid ones.
+
 
 ## Vulnerability Explanation
 
@@ -178,6 +181,12 @@ Proper defences should:
 - Do not reset the failed-attempts counter on successful login from a different account on the same IP.
 - Consider multi-factor authentication for all accounts to render password brute-force ineffective.
 
----
+🌍 Real-World Scenario
+
+In real applications, weak brute-force protection like this can allow attackers to systematically guess passwords and take over user accounts, especially when no additional protections (like MFA) are in place.
+
+🏁 Conclusion
+
+This lab shows how improper implementation of brute-force protection can make security controls ineffective. By exploiting a logic flaw in how failed attempts are tracked, it was possible to bypass the IP block and successfully brute-force a user’s password.
 
 *PortSwigger Web Security Academy — Authentication Labs*
