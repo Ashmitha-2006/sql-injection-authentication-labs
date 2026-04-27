@@ -16,7 +16,9 @@ This lab demonstrates a UNION-based SQL injection attack that retrieves username
 
 ![Lab Description](step01.png)
 
----
+🧠 Attacker’s Approach
+
+While testing the product category filter, I noticed that user input was being included directly in a SQL query.This suggested a possible SQL injection vulnerability.After confirming the injection, I focused on using a UNION-based attack to extract data from other tables in the database instead of just manipulating the query.
 
 ## Vulnerability Description
 
@@ -141,6 +143,19 @@ Result returned in response:
 - **The number and type of UNION columns must exactly match** the original query — always determine this first.
 - **Hashing passwords is critical** — plaintext passwords in the DB mean immediate full compromise if SQL injection is found.
 
----
+🌍 Real-World Scenario
+
+In real-world applications, UNION-based SQL injection can expose entire databases, including user credentials and sensitive business data.
+
+Attackers can use this information to:
+
+Take over accounts
+Escalate privileges
+Perform further attacks on the system
+
+🏁 Conclusion
+
+This lab demonstrates how a SQL injection vulnerability can be escalated into a full data extraction attack using UNION queries. By carefully crafting payloads, it was possible to retrieve sensitive information from the database and compromise the application.
+
 
 *Writeup produced as part of PortSwigger Web Security Academy lab practice.*
