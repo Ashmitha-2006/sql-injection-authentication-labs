@@ -6,9 +6,9 @@
 
 ---
 
-## Objective
+📌 Overview
 
-This lab's password change functionality makes it vulnerable to brute-force attacks. To solve the lab, use the list of candidate passwords to brute-force Carlos's account and access his "My account" page.
+This lab demonstrates a flaw in the password change functionality that allows an attacker to brute-force a user’s password by analyzing differences in server responses.
 
 | Credential | Value |
 |---|---|
@@ -16,7 +16,10 @@ This lab's password change functionality makes it vulnerable to brute-force atta
 | Victim's username | `carlos` |
 | Passwords | Candidate password list (from lab) |
 
----
+🧠 Attacker’s Approach
+
+While testing the password change feature, I noticed that the application responded differently depending on the input provided.When incorrect current passwords were used, the application returned a generic error. However, when the correct current password was entered but the new passwords did not match, a different response was observed.
+This difference in behavior indicated that the application was leaking information about whether the current password was correct.
 
 ## Vulnerability Explanation
 
@@ -30,7 +33,7 @@ The password change form accepts a `username` parameter as hidden input. The for
 
 By setting the two new password fields to **different values** and iterating through candidate passwords in the `current-password` field, we can use the **"New passwords do not match"** message as a reliable oracle — it fires only when the current password is correct. This bypasses any lockout because a mismatched new password change never fully completes.
 
----
+
 
 ## Tools Required
 
@@ -171,6 +174,12 @@ This is a **business logic flaw** combined with **information disclosure through
 - Implement **rate limiting** on the password change endpoint, separate from login rate limiting.
 - Require re-authentication (e.g., a re-login prompt) before allowing password changes for sensitive accounts.
 
----
+🌍 Real-World Scenario
+
+In real applications, attackers can exploit subtle differences in responses to identify valid credentials. This can significantly reduce the effort required to compromise user accounts, especially when combined with automated tools.
+
+🏁 Conclusion
+
+This lab demonstrates how inconsistent response handling in password change functionality can lead to password enumeration and account compromise. By exploiting response differences, it was possible to identify the correct password and gain access to the target account.
 
 *PortSwigger Web Security Academy — Authentication Labs*
