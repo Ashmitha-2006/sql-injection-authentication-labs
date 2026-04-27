@@ -145,10 +145,7 @@ Result returned in response:
 
 🌍 Real-World Scenario
 
-In real-world applications, UNION-based SQL injection can expose entire databases, including user credentials and sensitive business data.
-
-Attackers can use this information to:
-
+In real-world applications, UNION-based SQL injection can expose entire databases, including user credentials and sensitive business data.Attackers can use this information to:
 Take over accounts
 Escalate privileges
 Perform further attacks on the system
